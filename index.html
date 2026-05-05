@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furqan Rustam — Cybersecurity Researcher & AI Scientist</title>
+  <meta name="description" content="Furqan Rustam — PhD Candidate at University College Dublin. Cybersecurity Researcher using AI & NLP for safer digital systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --teal:        #0aaa8c;
+      --teal-light:  #e6f7f4;
+      --teal-mid:    #b2e8de;
+      --teal-dark:   #077a65;
+      --slate:       #1e293b;
+      --slate-mid:   #334155;
+      --slate-light: #64748b;
+      --bg:          #f8fafb;
+      --bg-card:     #ffffff;
+      --bg-section:  #f1f5f4;
+      --border:      #e2eae8;
+      --text:        #1e293b;
+      --text-muted:  #64748b;
+      --radius:      12px;
+      --shadow:      0 2px 16px rgba(30,41,59,0.08);
+      --shadow-hover:0 8px 32px rgba(30,41,59,0.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%;
+      background: rgba(248,250,251,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--slate); text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.88rem; font-weight: 500;
+      transition: color .2s; position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: var(--teal); transition: width .25s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--teal); }
+    .nav-icons { display: flex; gap: 0.5rem; }
+    .nav-icons a {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg-card);
+      display: grid; place-items: center;
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.8rem; transition: all .2s;
+    }
+    .nav-icons a:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+    .hamburger { display: none; cursor: pointer; font-size: 1.2rem; color: var(--slate); border: none; background: none; padding: 4px; }
+
+    /* HERO */
+    #home {
+      min-height: calc(100vh - 64px);
+      display: grid; grid-template-columns: 1fr 400px;
+      align-items: center; gap: 4rem;
+      padding: 4rem 6% 3rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-blob {
+      position: absolute; right: 0; top: 0;
+      width: 52%; height: 100%;
+      background: linear-gradient(135deg, var(--teal-light) 0%, #dff2ef 60%, var(--bg) 100%);
+      clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 5px 14px; border-radius: 100px;
+      background: var(--teal-light); border: 1px solid var(--teal-mid);
+      color: var(--teal-dark); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1.4rem;
+    }
+    .hero-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .hero-greeting { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.2rem; }
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 700; line-height: 1.05;
+      color: var(--slate); letter-spacing: -0.03em; margin-bottom: 0.6rem;
+    }
+    .hero-name em { color: var(--teal); font-style: normal; }
+    .hero-role {
+      font-size: 1.05rem; font-weight: 600; color: var(--slate-mid); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hero-role::before { content: ''; width: 28px; height: 2px; background: var(--teal); display: block; }
+    .hero-desc { font-size: 1rem; color: var(--text-muted); max-width: 480px; margin-bottom: 2.2rem; line-height: 1.8; }
+    .hero-desc a { color: var(--teal); text-decoration: none; font-weight: 500; }
+    .hero-btns { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 2.8rem; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.7rem; background: var(--teal); color: #fff;
+      border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; border: 2px solid var(--teal);
+      transition: all .2s; box-shadow: 0 4px 16px rgba(10,170,140,0.28);
+    }
+    .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.7rem; border: 2px solid var(--border);
+      color: var(--slate); border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; background: var(--bg-card); transition: all .2s;
+    }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .badge {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 1rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 10px;
+      box-shadow: var(--shadow); font-size: 0.82rem;
+    }
+    .badge i { color: var(--teal); font-size: 1rem; }
+    .badge-val { font-weight: 600; color: var(--slate); }
+    .badge-lbl { color: var(--text-muted); font-size: 0.72rem; }
+
+    .hero-img-wrap { position: relative; z-index: 1; display: flex; justify-content: center; align-items: flex-end; }
+    .hero-img-frame {
+      width: 340px; height: 380px;
+      border-radius: 50% 50% 46% 46% / 52% 52% 48% 48%;
+      background: linear-gradient(160deg, var(--teal-mid) 0%, var(--teal-light) 100%);
+      border: 3px solid var(--teal-mid); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 20px 60px rgba(10,170,140,0.18);
+    }
+    .hero-img-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .photo-ph { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; color: var(--text-muted); text-align: center; padding: 1rem; }
+    .photo-ph i { font-size: 4rem; color: var(--teal-mid); }
+    .photo-ph small { font-size: 0.75rem; line-height: 1.5; }
+    .hero-float-card {
+      position: absolute; bottom: 24px; left: -20px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.7rem 1rem;
+      box-shadow: var(--shadow-hover);
+      display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem;
+    }
+    .hero-float-card i { color: var(--teal); font-size: 1.1rem; }
+    .fc-val { font-weight: 700; color: var(--slate); }
+    .fc-lbl { color: var(--text-muted); }
+
+    /* SECTION COMMON */
+    section { padding: 5rem 6%; }
+    .sec-label { font-size: 0.72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.4rem; }
+    .sec-title { font-family: 'Fraunces', serif; font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; color: var(--slate); letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+    .sec-sub { color: var(--text-muted); font-size: 1rem; max-width: 560px; margin-bottom: 2.5rem; }
+    .sec-header-row { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+    .sec-header-row .sec-sub { margin-bottom: 0; }
+    .see-all {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--teal); font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; white-space: nowrap; transition: gap .2s;
+    }
+    .see-all:hover { gap: 0.7rem; }
+
+    /* QUOTE */
+    .quote-banner {
+      background: var(--slate); color: #fff;
+      padding: 2.5rem 6%; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .q-mark { font-family: 'Fraunces', serif; font-size: 4rem; color: var(--teal); line-height: 1; margin-top: -0.8rem; }
+    .q-text { font-family: 'Fraunces', serif; font-size: clamp(1.1rem,2vw,1.5rem); font-style: italic; }
+    .q-attr { color: var(--teal); font-size: 0.9rem; font-weight: 600; }
+
+    /* STATS */
+    .stats-wrap { padding: 0 6% 4rem; }
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(5,1fr);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .stat { padding: 1.8rem 1.2rem; text-align: center; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1; }
+    .stat-lbl { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* ABOUT */
+    #about { background: var(--bg-section); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.97rem; }
+    .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.5rem; }
+    .chip {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 0.9rem; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 0.83rem; color: var(--slate-mid); font-weight: 500; transition: all .2s;
+    }
+    .chip:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+    .chip i { color: var(--teal); font-size: 0.85rem; }
+
+    /* FOCUS CARDS */
+    .focus-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.2rem; }
+    .focus-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.6rem;
+      transition: all .25s; box-shadow: var(--shadow);
+    }
+    .focus-card:hover { border-color: var(--teal); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .fc-icon { width: 46px; height: 46px; border-radius: 10px; background: var(--teal-light); display: grid; place-items: center; color: var(--teal); font-size: 1.1rem; margin-bottom: 1rem; }
+    .focus-card h3 { font-size: 1rem; font-weight: 700; color: var(--slate); margin-bottom: 0.45rem; }
+    .focus-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* PROJECTS */
+    #projects { background: var(--bg-section); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.4rem; }
+    .proj-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: all .25s; display: flex; flex-direction: column;
+    }
+    .proj-card:hover { border-color: var(--teal); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .proj-top { padding: 1.4rem 1.4rem 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .proj-icon { width: 42px; height: 42px; border-radius: 9px; display: grid; place-items: center; font-size: 1rem; flex-shrink: 0; }
+    .proj-icon.gh { background: #f0f0f0; color: #24292e; }
+    .proj-icon.kg { background: #e8f4ff; color: #20beff; }
+    .proj-icon.py { background: #fef9e7; color: #d4870a; }
+    .proj-icon.sec { background: var(--teal-light); color: var(--teal); }
+    .proj-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .proj-tag { padding: 2px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; }
+    .tag-ml { background: #f3e8ff; color: #7c3aed; }
+    .tag-nlp { background: #e0f2fe; color: #0277bd; }
+    .tag-sec { background: var(--teal-light); color: var(--teal-dark); }
+    .tag-data { background: #fef3c7; color: #b45309; }
+    .tag-py { background: #fef9e7; color: #d4870a; }
+    .proj-body { padding: 1rem 1.4rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-body h3 { font-size: 1rem; font-weight: 700; color: var(--slate); margin-bottom: 0.4rem; }
+    .proj-body p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .proj-links { display: flex; gap: 0.6rem; margin-top: 1.1rem; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 5px 12px; border: 1px solid var(--border);
+      border-radius: 6px; font-size: 0.78rem; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; transition: all .2s;
+    }
+    .proj-link:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+
+    /* KAGGLE */
+    .kaggle-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.2rem; }
+    .kag-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem;
+      box-shadow: var(--shadow); transition: all .25s; display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .kag-card:hover { border-color: #20beff; transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .kag-icon { font-size: 1.8rem; flex-shrink: 0; color: #20beff; }
+    .kag-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--slate); margin-bottom: 0.3rem; }
+    .kag-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .kag-meta { display: flex; gap: 0.75rem; margin-top: 0.6rem; font-size: 0.75rem; color: var(--text-muted); }
+    .kag-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .kag-link { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.75rem; color: #20beff; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: gap .2s; }
+    .kag-link:hover { gap: 0.6rem; }
+
+    /* PUBLICATIONS */
+    #publications { background: var(--bg-section); }
+    .pub-list { display: flex; flex-direction: column; gap: 1.1rem; max-width: 860px; }
+    .pub-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow); transition: border-color .2s; display: flex; gap: 1.2rem; align-items: flex-start;
+    }
+    .pub-card:hover { border-color: var(--teal); }
+    .pub-year { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--teal); min-width: 48px; text-align: center; line-height: 1; padding-top: 0.1rem; }
+    .pub-body { flex: 1; }
+    .pub-venue { font-size: 0.72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 0.3rem; }
+    .pub-title { font-weight: 700; color: var(--slate); font-size: 0.96rem; margin-bottom: 0.4rem; line-height: 1.45; }
+    .pub-authors { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+    .pub-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pub-btn {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 4px 12px; border: 1px solid var(--border);
+      border-radius: 6px; font-size: 0.75rem; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; transition: all .2s;
+    }
+    .pub-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+
+    /* AWARDS */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.2rem; }
+    .award-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      box-shadow: var(--shadow); transition: all .25s; display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .award-card:hover { border-color: #f59e0b; transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .award-icon { width: 44px; height: 44px; border-radius: 10px; background: #fef3c7; display: grid; place-items: center; font-size: 1.2rem; color: #f59e0b; flex-shrink: 0; }
+    .award-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--slate); margin-bottom: 0.25rem; }
+    .award-org { font-size: 0.8rem; color: var(--teal-dark); font-weight: 600; margin-bottom: 0.25rem; }
+    .award-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+    .award-year { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.4rem; font-weight: 600; }
+
+    /* TEACHING */
+    #teaching { background: var(--bg); }
+    .teaching-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.2rem; }
+    .teach-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow); transition: all .25s; }
+    .teach-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+    .tc-top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.75rem; }
+    .tc-icon { width: 38px; height: 38px; border-radius: 8px; background: var(--teal-light); display: grid; place-items: center; color: var(--teal); font-size: 0.95rem; }
+    .teach-card h3 { font-size: 0.93rem; font-weight: 700; color: var(--slate); }
+    .tc-inst { font-size: 0.78rem; color: var(--teal-dark); font-weight: 600; margin-bottom: 0.5rem; }
+    .teach-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* CONTACT */
+    #contact { background: var(--bg-section); text-align: center; }
+    .contact-inner { max-width: 680px; margin: 0 auto; }
+    .contact-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; box-shadow: var(--shadow); margin-top: 2rem; }
+    .contact-email { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700; color: var(--teal); text-decoration: none; margin: 0.75rem 0 1.5rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: 0.7rem; margin-top: 1.5rem; }
+    .c-link {
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      padding: 0.9rem 0.5rem; border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text-muted); text-decoration: none;
+      font-size: 0.8rem; font-weight: 600; background: var(--bg); transition: all .2s;
+    }
+    .c-link i { font-size: 1.3rem; }
+    .c-link:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-light); }
+
+    /* FOOTER */
+    footer { background: var(--slate); color: rgba(255,255,255,0.45); padding: 2rem 6%; text-align: center; font-size: 0.82rem; }
+    footer a { color: var(--teal); text-decoration: none; }
+
+    /* FADE IN */
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .fi.show { opacity: 1; transform: none; }
+    .fi-d1 { transition-delay: .12s; }
+    .fi-d2 { transition-delay: .22s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      #home { grid-template-columns: 1fr; padding: 3rem 6% 5rem; }
+      .hero-bg-blob { display: none; }
+      .hero-img-wrap { order: -1; }
+      .hero-img-frame { width: 260px; height: 290px; }
+      .hero-float-card { left: 50%; transform: translateX(-50%); bottom: -16px; white-space: nowrap; }
+      .hero-content { text-align: center; }
+      .hero-role { justify-content: center; }
+      .hero-desc { margin: 0 auto 2rem; }
+      .hero-btns { justify-content: center; }
+      .hero-badges { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .stats-bar { grid-template-columns: repeat(3,1fr); }
+      .stat:nth-child(3) { border-right: none; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+    }
+    @media (max-width: 600px) {
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(n+3) { border-top: 1px solid var(--border); border-right: 1px solid var(--border); }
+      .stat:nth-child(4) { border-right: none; }
+    }
+
+    /* MOBILE NAV */
+    .mobile-nav {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 199;
+      background: var(--bg-card); border-bottom: 1px solid var(--border);
+      padding: 1.5rem 6%; flex-direction: column; gap: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: var(--slate); text-decoration: none; font-weight: 600; font-size: 1rem; padding: 0.2rem 0; }
+    .mobile-nav a:hover { color: var(--teal); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#home">Furqan <span>Rustam</span></a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#consultancy">Consultancy</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#education">Education</a></li>
+    <!-- <li><a href="#skills">Skills</a></li> -->
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://www.linkedin.com/in/furqan-rustam-44963b136/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" title="Scholar"><i class="fas fa-graduation-cap"></i></a>
+    <a href="https://github.com/furqanrustam" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="mailto:furqan.rustam1@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><i class="fas fa-bars"></i></button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#research" onclick="closeMenu()">Research</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#consultancy" onclick="closeMenu()">Consultancy</a>
+  <a href="#publications" onclick="closeMenu()">Publications</a>
+  <a href="#awards" onclick="closeMenu()">Awards</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-blob"></div>
+  <div class="hero-content">
+    <div class="hero-pill"><span class="hero-pill-dot"></span> Open to Collaboration</div>
+    <p class="hero-greeting">Hello, I'm</p>
+    <h1 class="hero-name">Furqan <em>Rustam</em></h1>
+    <p class="hero-role">Cybersecurity Researcher, Academic &amp; AI Consultant</p>
+    <p class="hero-desc">
+      PhD Candidate at <a href="https://www.ucd.ie/" target="_blank">University College Dublin</a>,
+      working across <a href="#research">research</a>, <a href="#teaching">academia</a>, and
+      <a href="#consultancy">consultancy</a>. My work focuses on applying Machine Learning,
+      NLP, and AI-driven cybersecurity to enhance online safety, detect harmful behaviour,
+      protect critical infrastructure, and build secure digital environments.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
+      <a href="https://drive.google.com/file/d/1OH-eQijWrh5gnOBtTEQRgM5203JAG5vo/view?usp=drive_link" class="btn-outline"><i class="fas fa-download"></i> Download CV</a>
+      <!-- Change # above to "cv.pdf" once you add your CV file -->
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><i class="fas fa-shield-alt"></i><div><div class="badge-val">Cybersecurity &amp; AI</div><div class="badge-lbl">Research Focus</div></div></div>
+      <div class="badge"><i class="fas fa-handshake"></i><div><div class="badge-val">Consultancy</div><div class="badge-lbl">Cybersecurity &amp; AI</div></div></div>
+      <div class="badge"><i class="fas fa-star"></i><div><div class="badge-val">Fiverr Level 2</div><div class="badge-lbl">Top Rated Seller</div></div></div>
+      <div class="badge"><i class="fas fa-briefcase"></i><div><div class="badge-val">8+ Years</div><div class="badge-lbl">Academia &amp; Research</div></div></div>
+    </div>
+  </div>
+
+  <div class="hero-img-wrap">
+    <div class="hero-img-frame">
+      <!--
+        ADD YOUR PHOTO:
+        1. Save your photo as photo.jpg in the same folder as index.html
+        2. Delete the <div class="photo-ph">...</div> block below
+        3. Replace it with: <img src="photo.jpg" alt="Furqan Rustam" />
+      -->
+      <img src="profile.jpeg" alt="Furqan Rustam" />
+    </div>
+    <div class="hero-float-card">
+      <i class="fas fa-file-alt"></i>
+      <div><div class="fc-val">100+ Papers</div><div class="fc-lbl">Published</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-banner">
+  <span class="q-mark">"</span>
+  <span class="q-text">Don’t fear AI — research it, apply it, and secure it</span>
+  <span class="q-attr">&mdash; furqan rustam</span>
+</div>
+
+<!-- STATS -->
+<div class="stats-wrap fi">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">100+</div><div class="stat-lbl">Research Papers</div></div>
+    <div class="stat"><div class="stat-num">8+</div><div class="stat-lbl">Years Experience</div></div>
+    <div class="stat"><div class="stat-num">100+</div><div class="stat-lbl">Students Mentored</div></div>
+    <div class="stat"><div class="stat-num">Lvl 2</div><div class="stat-lbl">Fiverr Seller</div></div>
+    <div class="stat"><div class="stat-num">🌍</div><div class="stat-lbl">Global Impact</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="fi">
+      <p class="sec-label">About Me</p>
+      <h2 class="sec-title">Researcher &amp; Educator</h2>
+      <div class="about-text">
+        <p>Hello! I'm Furqan Rustam, a researcher and educator specialising in Cybersecurity and Artificial Intelligence. Originally from Pakistan, my work is driven by a passion for building intelligent systems that make the digital world safer.</p>
+        <p>I am pursuing my Ph.D. at <strong>University College Dublin</strong>, where my research applies Machine Learning and Natural Language Processing to detect and mitigate harmful online interactions.</p>
+        <p>Alongside research, I teach and mentor students across CS, AI, and Data Science, and freelance on Fiverr as a Level 2 Seller delivering machine learning projects.</p>
+        <p>I also provide consultancy in the <strong>cybersecurity and AI domain</strong>, helping academic, industrial, and startup-focused teams translate research ideas into practical solutions. My experience includes AI-driven threat detection, critical infrastructure security, network resilience, research planning, and product-oriented cybersecurity strategy.</p>
+        <p>With <strong>8+ years of combined academia and research experience</strong>, I have contributed to university research, industry-facing projects, and commercialization-oriented initiatives, including work connected to TROCI and the development of the OneShield-Secura startup concept.</p>
+        <p>I'm always open to collaboration on projects aimed at making digital environments more secure, trustworthy, and resilient.</p>
+      </div>
+      <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap;">
+        <a href="mailto:furqan.rustam1@gmail.com" class="btn-primary" style="font-size:.85rem;padding:.6rem 1.2rem;"><i class="fas fa-envelope"></i> Get In Touch</a>
+        <a href="#" class="btn-outline" style="font-size:.85rem;padding:.6rem 1.2rem;"><i class="fas fa-download"></i> Download CV</a>
+      </div>
+    </div>
+    <div class="fi fi-d1">
+      <p class="sec-label">Expertise</p>
+      <h2 class="sec-title">Research Areas</h2>
+      <div class="expertise-grid">
+        <div class="chip"><i class="fas fa-robot"></i> Machine Learning</div>
+        <div class="chip"><i class="fas fa-language"></i> NLP</div>
+        <div class="chip"><i class="fas fa-shield-alt"></i> Cybersecurity</div>
+        <div class="chip"><i class="fas fa-image"></i> Image Processing</div>
+        <div class="chip"><i class="fas fa-search"></i> Text Mining</div>
+        <div class="chip"><i class="fas fa-exclamation-circle"></i> Threat Detection</div>
+        <div class="chip"><i class="fas fa-database"></i> Data Science</div>
+        <div class="chip"><i class="fas fa-handshake"></i> Cybersecurity Consulting</div>
+        <div class="chip"><i class="fas fa-industry"></i> Critical Infrastructure</div>
+        <div class="chip"><i class="fas fa-lightbulb"></i> AI Product Strategy</div>
+        <div class="chip"><i class="fas fa-comment-slash"></i> Hate Speech</div>
+        <div class="chip"><i class="fas fa-lock"></i> Data Security</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH FOCUS -->
+<section id="research">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">What I Do</p>
+      <h2 class="sec-title">Research Focus</h2>
+      <p class="sec-sub">Exploring AI-driven solutions across cybersecurity, NLP, and intelligent systems.</p>
+    </div>
+  </div>
+  <div class="focus-grid fi fi-d1">
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-flask"></i></div>
+      <h3>Research</h3>
+      <p>AI-driven solutions for online safety, toxic content detection, and cybersecurity using ML &amp; NLP.</p>
+    </div>
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-code-branch"></i></div>
+      <h3>Open Source</h3>
+      <p>Sharing datasets and code on GitHub and Kaggle to support the reproducible research community.</p>
+    </div>
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h3>Teaching</h3>
+      <p>Mentoring students in CS, AI, and Data Science at university level with real-world projects.</p>
+    </div>
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-briefcase"></i></div>
+      <h3>Freelancing</h3>
+      <p>Technical writing &amp; ML projects on Fiverr — Level 2 Seller with top-rated client reviews.</p>
+    </div>
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-handshake-angle"></i></div>
+      <h3>Consultancy</h3>
+      <p>Advising on cybersecurity and AI solutions, research commercialisation, network security, and ML-based threat detection.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (GitHub) -->
+<section id="projects">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">GitHub Projects</p>
+      <h2 class="sec-title">Featured Projects</h2>
+      <p class="sec-sub">Selected research implementations in cybersecurity, AI, LLMs, anomaly detection, malicious traffic detection, and machine learning.</p>
+    </div>
+    <a href="https://github.com/furqanrustam?tab=repositories" target="_blank" class="see-all">
+      <i class="fab fa-github"></i> All Repos <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <div class="projects-grid fi fi-d1">
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon sec"><i class="fas fa-shield-virus"></i></div>
+        <div class="proj-tags">
+          <span class="proj-tag tag-sec">Cybersecurity</span>
+          <span class="proj-tag tag-ml">ML</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <h3>FAMTD Malicious Traffic Detection</h3>
+        <p>
+          Fully automated malicious traffic detection system for multi-environment networks,
+          integrating machine learning, deep learning, optimisation, and feature engineering.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/furqanrustam/FAMTD-Malicious-Traffic-Detection" target="_blank" class="proj-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon sec"><i class="fas fa-network-wired"></i></div>
+        <div class="proj-tags">
+          <span class="proj-tag tag-sec">DDoS</span>
+          <span class="proj-tag tag-data">Network Security</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <h3>MultiLF</h3>
+        <p>
+          A unified continuous learning framework for real-time DDoS detection
+          in multi-environment networks, supporting adaptive and resilient cyber-defence.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/furqanrustam/MultiLF" target="_blank" class="proj-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon gh"><i class="fas fa-robot"></i></div>
+        <div class="proj-tags">
+          <span class="proj-tag tag-nlp">LLM</span>
+          <span class="proj-tag tag-py">RAG</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <h3>Few-Shot Retrieval-Augmented LLMs</h3>
+        <p>
+          A project exploring few-shot learning and retrieval-augmented generation
+          for improving LLM reasoning, knowledge grounding, and domain-specific responses.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/furqanrustam/Few-Shot-Retrieval-Augmented-LLMs" target="_blank" class="proj-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon py"><i class="fas fa-bug"></i></div>
+        <div class="proj-tags">
+          <span class="proj-tag tag-sec">Malware</span>
+          <span class="proj-tag tag-ml">Transfer Learning</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <h3>Malware Detection Using Image Representation</h3>
+        <p>
+          Malware detection approach using image representation of malware data
+          and transfer learning models for automated classification and threat analysis.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/furqanrustam/Malware-detection-using-image-representation-of-malware-data-and-transfer-learning" target="_blank" class="proj-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon sec"><i class="fas fa-chart-line"></i></div>
+        <div class="proj-tags">
+          <span class="proj-tag tag-sec">Anomaly Detection</span>
+          <span class="proj-tag tag-ml">Autoencoder</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <h3>RD-AE and MEn Dataset</h3>
+        <p>
+          Research implementation combining anomaly detection and multi-environment
+          network data to support AI-driven intrusion and malicious traffic detection.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/furqanrustam/RD-AE-and-MEn-Dataset" target="_blank" class="proj-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <div class="proj-icon gh"><i class="fas fa-comments"></i></div>
+        <div class="proj-tags">
+          <span class="proj-tag tag-nlp">NLP</span>
+          <span class="proj-tag tag-data">Social Media</span>
+        </div>
+      </div>
+      <div class="proj-body">
+        <h3>Racism Data</h3>
+        <p>
+          Dataset and research resource for racism detection, sentiment analysis,
+          harmful content analysis, and online abuse detection using social media data.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/furqanrustam/RacismData" target="_blank" class="proj-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KAGGLE DATASETS -->
+<section id="datasets" style="background:var(--bg-section);">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Open Data</p>
+      <h2 class="sec-title">Kaggle Datasets</h2>
+      <p class="sec-sub">Publicly available datasets supporting research in cybersecurity, malicious traffic detection, NLP, sentiment analysis, and social media intelligence.</p>
+    </div>
+    <a href="https://www.kaggle.com/furqanrustam118/datasets" target="_blank" class="see-all">
+      <i class="fab fa-kaggle"></i> All Datasets <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <div class="kaggle-grid fi fi-d1">
+
+    <div class="kag-card">
+      <div class="kag-icon"><i class="fab fa-kaggle"></i></div>
+      <div>
+        <h3>MEn Dataset</h3>
+        <p>
+          A multi-environment network dataset for real-time DDoS and malicious traffic detection,
+          supporting research on IoT, traditional IP-based traffic, and AI-driven cybersecurity.
+        </p>
+        <div class="kag-meta">
+          <span><i class="fas fa-database"></i> 5.64 GB</span>
+          <span><i class="fas fa-columns"></i> 39 columns</span>
+        </div>
+        <a href="https://www.kaggle.com/furqanrustam118/men-dataset" target="_blank" class="kag-link">
+          View Dataset <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="kag-card">
+      <div class="kag-icon"><i class="fab fa-kaggle"></i></div>
+      <div>
+        <h3>Racism Dataset</h3>
+        <p>
+          A Twitter-based dataset for racism detection through sentiment analysis,
+          supporting research on harmful content, social media toxicity, and online abuse detection.
+        </p>
+        <div class="kag-meta">
+          <span><i class="fas fa-file-csv"></i> 120 MB</span>
+          <span><i class="fas fa-comments"></i> 170K records</span>
+        </div>
+        <a href="https://www.kaggle.com/furqanrustam118/racism-dataset" target="_blank" class="kag-link">
+          View Dataset <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="kag-card">
+      <div class="kag-icon"><i class="fab fa-kaggle"></i></div>
+      <div>
+        <h3>Calling Apps Reviews Dataset</h3>
+        <p>
+          Google Play Store reviews dataset for aspect-level sentiment analysis and recommendation
+          research on calling apps such as IMO, Skype, Telegram, WeChat, and WhatsApp.
+        </p>
+        <div class="kag-meta">
+          <span><i class="fas fa-mobile-alt"></i> App Reviews</span>
+          <span><i class="fas fa-brain"></i> Sentiment Analysis</span>
+        </div>
+        <a href="https://www.kaggle.com/furqanrustam118/calling-apps-reviews-dataset" target="_blank" class="kag-link">
+          View Dataset <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONSULTANCY -->
+<section id="consultancy" style="background:var(--bg);">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Cybersecurity &amp; AI Services</p>
+      <h2 class="sec-title">Consultancy</h2>
+      <p class="sec-sub">
+        I provide consultancy across cybersecurity and AI, supporting academic, industry, and startup teams.
+        With extensive hands-on experience, including freelance consulting on Fiverr, I help clients design,
+        develop, and validate intelligent and secure systems — from research ideas to working prototypes.
+      </p>
+    </div>
+    <a href="mailto:furqan.rustam1@gmail.com" class="see-all">
+      <i class="fas fa-envelope"></i> Discuss a Project <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <div class="focus-grid fi fi-d1">
+
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-shield-halved"></i></div>
+      <h3>Cybersecurity Advisory</h3>
+      <p>
+        Consultancy on secure system design, network security, threat detection, and AI-driven defence mechanisms.
+        Helping organisations identify risks and build robust, secure architectures.
+      </p>
+    </div>
+
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-brain"></i></div>
+      <h3>AI &amp; Machine Learning Solutions</h3>
+      <p>
+        Development of ML/NLP models, intelligent systems, and applied AI solutions,
+        including data pipelines, experimentation, and performance optimisation.
+      </p>
+    </div>
+
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-code"></i></div>
+      <h3>Prototype Development</h3>
+      <p>
+        Assisting clients in building <strong>early-stage prototypes</strong> and proof-of-concepts,
+        translating ideas into functional systems for research, startups, and product validation.
+      </p>
+    </div>
+
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-lightbulb"></i></div>
+      <h3>Startup &amp; Productisation</h3>
+      <p>
+        Founder of <strong>OneShield Secura</strong>, a cybersecurity-focused startup initiative,
+        working on transforming research ideas into scalable, real-world security solutions.
+      </p>
+    </div>
+
+    <div class="focus-card">
+      <div class="fc-icon"><i class="fas fa-briefcase"></i></div>
+      <h3>Freelance Consulting (Fiverr)</h3>
+      <p>
+        Extensive experience delivering high-quality consulting services on Fiverr,
+        including AI solutions, and cybersecurity-related projects,
+        with strong client satisfaction and repeat collaborations.
+      </p>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Academic Work</p>
+      <h2 class="sec-title">Selected Publications</h2>
+      <p class="sec-sub">Five representative papers highlighting my work in cybersecurity, malicious traffic detection, anomaly detection, AI, and applied machine learning.</p>
+    </div>
+    <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="see-all">
+      <i class="fas fa-graduation-cap"></i> Google Scholar <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <div class="pub-list fi fi-d1">
+
+    <div class="pub-card">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-venue">Computer Networks · Elsevier</div>
+        <div class="pub-title">A Simulation-Based Unified Framework for Real-Time Malicious Traffic Detection in Multi-Environment Networks</div>
+        <div class="pub-authors">Furqan Rustam, Anca Delia Jurcut</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="pub-btn"><i class="fas fa-external-link-alt"></i> Scholar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-year">2024</div>
+      <div class="pub-body">
+        <div class="pub-venue">Computer Networks · Elsevier</div>
+        <div class="pub-title">FAMTDS: A Novel MFO-Based Fully Automated Malicious Traffic Detection System for Multi-Environment Networks</div>
+        <div class="pub-authors">Furqan Rustam, Wajdi Aljedaani, Mahmoud S. Elsayed, Anca Delia Jurcut</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="pub-btn"><i class="fas fa-external-link-alt"></i> Scholar</a>
+          <a href="https://github.com/furqanrustam/FAMTD-Malicious-Traffic-Detection" target="_blank" class="pub-btn"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-year">2024</div>
+      <div class="pub-body">
+        <div class="pub-venue">Computers &amp; Security · Elsevier</div>
+        <div class="pub-title">Malicious Traffic Detection in Multi-Environment Networks Using Novel S-DATE and PSO-D-SEM Approaches</div>
+        <div class="pub-authors">Furqan Rustam, Anca Delia Jurcut</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="pub-btn"><i class="fas fa-external-link-alt"></i> Scholar</a>
+          <a href="https://github.com/furqanrustam/PSO-D-SEM" target="_blank" class="pub-btn"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-venue">IEEE GLOBECOM · Conference</div>
+        <div class="pub-title">One Model to Catch Them All: Autoencoder-Based Anomaly Detection in Next-Generation Networks</div>
+        <div class="pub-authors">Islam Obaidat, Furqan Rustam, Anca Delia Jurcut</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="pub-btn"><i class="fas fa-external-link-alt"></i> Scholar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-year">2023</div>
+      <div class="pub-body">
+        <div class="pub-venue">Journal of Parallel and Distributed Computing · Elsevier</div>
+        <div class="pub-title">Malware Detection Using Image Representation of Malware Data and Transfer Learning</div>
+        <div class="pub-authors">Furqan Rustam, Iftikhar Ashraf, Anca Delia Jurcut, A. K. Bashir, Y. B. Zikria</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="pub-btn"><i class="fas fa-external-link-alt"></i> Scholar</a>
+          <a href="https://github.com/furqanrustam/Malware-detection-using-image-representation-of-malware-data-and-transfer-learning" target="_blank" class="pub-btn"><i class="fab fa-github"></i> Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:0.5rem;">
+      <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="btn-outline">
+        <i class="fas fa-graduation-cap"></i> See All Publications on Google Scholar
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" style="background:var(--bg-section);">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Recognition</p>
+      <h2 class="sec-title">Awards, Certifications &amp; Service</h2>
+      <p class="sec-sub">Recognition for research excellence, academic achievement, professional development, and scientific service.</p>
+    </div>
+  </div>
+
+  <div class="awards-grid fi fi-d1">
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-award"></i></div>
+      <div>
+        <h3>UCD Advantage Award 2026</h3>
+        <div class="award-org">University College Dublin</div>
+        <p>Recognised for developing employability skills beyond the classroom through academic, research, and professional engagement.</p>
+        <div class="award-year">2026</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-medal"></i></div>
+      <div>
+        <h3>UCD Fully Funded Scholarship</h3>
+        <div class="award-org">University College Dublin</div>
+        <p>Received a fully funded PhD scholarship at UCD in recognition of academic excellence and research potential.</p>
+        <div class="award-year">2022</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-globe-europe"></i></div>
+      <div>
+        <h3>Erasmus+ Funding Recipient</h3>
+        <div class="award-org">Una Europa Summer School</div>
+        <p>Awarded Erasmus+ funding to attend the Una Europa Summer School on Artificial Intelligence &amp; Creativity.</p>
+        <div class="award-year">2024</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-trophy"></i></div>
+      <div>
+        <h3>Best Presentation Award</h3>
+        <div class="award-org">CSAI Conference 2025, Beijing</div>
+        <p>Part of the awarded research work on cryptocurrency price prediction using hybrid deep learning and explainable AI.</p>
+        <div class="award-year">2025</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-certificate"></i></div>
+      <div>
+        <h3>Top Downloaded Article</h3>
+        <div class="award-org">Computational Intelligence</div>
+        <p>Received recognition for a highly downloaded article: “Review prognosis system to predict employees job satisfaction using deep neural network.”</p>
+        <div class="award-year">Achievement Certificate</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-user-graduate"></i></div>
+      <div>
+        <h3>Agentic AI Engineering</h3>
+        <div class="award-org">Udemy</div>
+        <p>Professional certification focused on agentic AI systems and modern AI engineering practices.</p>
+        <div class="award-year">Issued Aug 2025</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-brain"></i></div>
+      <div>
+        <h3>AI &amp; Creativity Summer School</h3>
+        <div class="award-org">Una Europa</div>
+        <p>Completed interdisciplinary training exploring AI, creativity, generative models, digital ethics, and responsible innovation.</p>
+        <div class="award-year">Issued Jul 2024</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-star"></i></div>
+      <div>
+        <h3>Fiverr Level 2 Seller</h3>
+        <div class="award-org">Fiverr Platform</div>
+        <p>Achieved Level 2 Seller status for consistent client satisfaction and high-quality delivery in machine learning projects.</p>
+        <div class="award-year">Professional Recognition</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-edit"></i></div>
+      <div>
+        <h3>Academic Editor</h3>
+        <div class="award-org">PLOS ONE</div>
+        <p>Serving as Academic Editor, contributing to peer review, manuscript evaluation, and the publication of high-quality scientific research.</p>
+        <div class="award-year">Dec 2022 – Present</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-file-signature"></i></div>
+      <div>
+        <h3>Peer Reviewer</h3>
+        <div class="award-org">IEEE</div>
+        <p>Contributing to the academic community through peer review and evaluation of research in computing, AI, and cybersecurity.</p>
+        <div class="award-year">Jan 2020 – Present</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-chart-line"></i></div>
+      <div>
+        <h3>High Research Impact</h3>
+        <div class="award-org">Google Scholar</div>
+        <p>Strong citation record across Data Science, Artificial Intelligence, Machine Learning, Data Mining, and Bioinformatics.</p>
+        <div class="award-year">7,900+ Citations</div>
+      </div>
+    </div>
+
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-flask"></i></div>
+      <div>
+        <h3>Top 2% Scientist Recognition</h3>
+        <div class="award-org">Stanford / Elsevier</div>
+        <p>Recognised among the world’s top scientists based on research impact and citation-based indicators.</p>
+        <div class="award-year">2023 · 2024 · 2025</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Education</p>
+      <h2 class="sec-title">Teaching &amp; Mentoring</h2>
+      <p class="sec-sub">Courses taught and academic mentoring across universities in Ireland and Pakistan.</p>
+    </div>
+  </div>
+
+  <div class="teaching-grid fi fi-d1">
+
+    <!-- UCD -->
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-university"></i></div>
+        <h3>Teaching Assistant &amp; Demonstrator</h3>
+      </div>
+      <div class="tc-inst">University College Dublin</div>
+      <p>
+        Delivered tutorials and lab sessions in <strong>Malware Analysis</strong>,
+        <strong>Data Structures</strong>, <strong>Machine Learning</strong>, and
+        <strong>Data Analytics</strong>, supporting undergraduate and postgraduate students.
+      </p>
+    </div>
+
+    <!-- NCI -->
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <h3>Lecturer (Master’s Programs)</h3>
+      </div>
+      <div class="tc-inst">National College of Ireland</div>
+      <p>
+        Teaching postgraduate courses including <strong>Artificial Intelligence</strong>,
+        <strong>Machine Learning</strong>, <strong>Data Analytics</strong>,
+        <strong>AI for Finance</strong>, and <strong>Data Communication &amp; Networking</strong>.
+      </p>
+    </div>
+
+    <!-- UMT -->
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-code"></i></div>
+        <h3>Lecturer</h3>
+      </div>
+      <div class="tc-inst">University of Management &amp; Technology (UMT), Lahore</div>
+      <p>
+        Taught <strong>Java Programming</strong> and <strong>Data Structures</strong>,
+        focusing on foundational computing concepts and practical software development skills.
+      </p>
+    </div>
+
+    <!-- KFUEIT -->
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-network-wired"></i></div>
+        <h3>Lecturer &amp; Research Assistant</h3>
+      </div>
+      <div class="tc-inst">Khawaja Fareed University of Engineering &amp; IT (KFUEIT)</div>
+      <p>
+        Delivered courses in <strong>Machine Learning</strong>,
+        <strong>Computer Networks</strong>, and <strong>Data Structures</strong>,
+        alongside research activities in data science and AI.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:var(--bg);">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Academic Background</p>
+      <h2 class="sec-title">Education</h2>
+      <p class="sec-sub">Formal academic training in computer science, cybersecurity, machine learning, data mining, and network security.</p>
+    </div>
+  </div>
+
+  <div class="teaching-grid fi fi-d1">
+
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>PhD in Computer Science</h3>
+      </div>
+      <div class="tc-inst">University College Dublin, Ireland · 2022–2026</div>
+      <p>
+        <strong>Thesis:</strong> Malicious Traffic Detection in Multi-Environment Networks using Hybrid Machine Learning Approaches.
+        <br><br>
+        <strong>Courses:</strong> Machine Learning, Network Security, Academic Writing for Science, Online Research Skills, and Research Integrity.
+      </p>
+    </div>
+
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-database"></i></div>
+        <h3>MS Computer Science</h3>
+      </div>
+      <div class="tc-inst">Khawaja Fareed University of Engineering &amp; Information Technology, Pakistan · 2018–2020</div>
+      <p>
+        <strong>Thesis:</strong> Data Resampling using Supervised Machine Learning Techniques to Predict Pulsar Stars.
+        <br><br>
+        <strong>Courses:</strong> Advanced Image Processing, Advanced Algorithm Design and Analysis, Advanced Data Mining, Theory of Computation, Machine Learning, and Natural Language Processing.
+        <br><br>
+        <strong>CGPA:</strong> 3.63/4.00
+      </p>
+    </div>
+
+    <div class="teach-card">
+      <div class="tc-top">
+        <div class="tc-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Master in Computer Science</h3>
+      </div>
+      <div class="tc-inst">The Islamia University of Bahawalpur, Pakistan · 2009–2013</div>
+      <p>
+        <strong>Project:</strong> EChat Messenger.
+        <br><br>
+        <strong>Courses:</strong> Programming Fundamentals, Java Programming, Web Designing, Databases, Networking, Data Structures, English, and Graphic Designing.
+        <br><br>
+        <strong>CGPA:</strong> 3.62/4.00
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TECHNICAL SKILLS -->
+<section id="skills" style="background:var(--bg-section);">
+  <div class="sec-header-row fi">
+    <div>
+      <p class="sec-label">Technical Profile</p>
+      <h2 class="sec-title">Computer Skills</h2>
+      <p class="sec-sub">Programming, AI/ML frameworks, cloud tools, simulation environments, and database technologies.</p>
+    </div>
+  </div>
+
+  <div class="expertise-grid fi fi-d1">
+    <div class="chip"><i class="fab fa-python"></i> Python</div>
+    <div class="chip"><i class="fas fa-code"></i> R, C, C++, Java</div>
+    <div class="chip"><i class="fas fa-database"></i> SQL</div>
+    <div class="chip"><i class="fas fa-brain"></i> PyTorch</div>
+    <div class="chip"><i class="fas fa-network-wired"></i> TensorFlow / Keras</div>
+    <div class="chip"><i class="fas fa-chart-line"></i> Scikit-learn / Pandas</div>
+    <div class="chip"><i class="fas fa-cloud"></i> AWS / Google Cloud</div>
+    <div class="chip"><i class="fas fa-server"></i> Apache Spark / Hadoop</div>
+    <div class="chip"><i class="fas fa-robot"></i> LangChain / CrewAI / AutoGen</div>
+    <div class="chip"><i class="fas fa-cube"></i> Docker / Git</div>
+    <div class="chip"><i class="fas fa-project-diagram"></i> Cisco Packet Tracer</div>
+    <div class="chip"><i class="fas fa-database"></i> MySQL / PostgreSQL / Neo4j / MongoDB</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="fi">
+      <p class="sec-label">Get In Touch</p>
+      <h2 class="sec-title">Open to Collaboration</h2>
+      <p class="sec-sub" style="margin:0 auto;">Whether it's research, cybersecurity and AI consultancy, startup collaboration, or academic discussion — I'd love to hear from you.</p>
+    </div>
+    <div class="contact-card fi fi-d1">
+      <a href="mailto:furqan.rustam1@gmail.com" class="contact-email">
+        <i class="fas fa-envelope"></i> furqan.rustam1@gmail.com
+      </a>
+      <div class="contact-grid">
+        <a href="https://www.linkedin.com/in/furqan-rustam-44963b136/" target="_blank" class="c-link"><i class="fab fa-linkedin-in"></i>LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=B_dGtHQAAAAJ" target="_blank" class="c-link"><i class="fas fa-graduation-cap"></i>Scholar</a>
+        <a href="https://github.com/furqanrustam" target="_blank" class="c-link"><i class="fab fa-github"></i>GitHub</a>
+        <a href="https://www.kaggle.com/furqanrustam118" target="_blank" class="c-link"><i class="fab fa-kaggle"></i>Kaggle</a>
+        <a href="https://orcid.org/0000-0001-8403-1047" target="_blank" class="c-link"><i class="fab fa-orcid"></i>ORCID</a>
+        <a href="https://www.researchgate.net/profile/Furqan-Rustam" target="_blank" class="c-link"><i class="fab fa-researchgate"></i>ResearchGate</a>
+        <a href="https://www.scopus.com/authid/detail.uri?authorId=57211950161" target="_blank" class="c-link"><i class="fas fa-database"></i>Scopus</a>
+        <a href="https://www.fiverr.com/furqanrustam" target="_blank" class="c-link"><i class="fas fa-star"></i>Fiverr</a>
+        <a href="https://twitter.com/FurqanRustam118" target="_blank" class="c-link"><i class="fab fa-twitter"></i>Twitter/X</a>
+        <a href="https://www.instagram.com/ch_furqan_rustam/" target="_blank" class="c-link"><i class="fab fa-instagram"></i>Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <a href="#home">Furqan Rustam</a> &nbsp;·&nbsp; PhD Candidate, University College Dublin &nbsp;·&nbsp; Built for GitHub Pages</p>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  // Active nav link
+  const secs = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+
+  // Mobile menu
+  function toggleMenu() { document.getElementById('mobileNav').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileNav').classList.remove('open'); }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('nav') && !e.target.closest('#mobileNav')) closeMenu();
+  });
+</script>
+</body>
+</html>
